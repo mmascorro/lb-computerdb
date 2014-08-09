@@ -1,0 +1,22 @@
+<%= form_for(@adobe_account) do |f| %>
+  <% if @adobe_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@adobe_account.errors.count, "error") %> prohibited this computer from being saved:</h2>
+
+      <ul>
+      <% @adobe_account.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit class: "button" %>
+  </div>
+<% end %>

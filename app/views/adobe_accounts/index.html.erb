@@ -1,0 +1,24 @@
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @adobe_accounts.each do |act| %>
+      <tr>
+        <td><%= act.email %></td>
+      
+        <td><%= link_to 'Edit', edit_adobe_account_path(act) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

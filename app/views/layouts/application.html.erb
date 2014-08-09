@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Machineregistry</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+
+	<div class="row">
+
+		<div class="large-10 columns">
+			<%= yield %>
+		</div>
+
+
+		<div class="large-2 columns">
+
+			<ul class="side-nav">
+				<li><%= link_to 'Computers', computers_path %></li>
+				<li><%= link_to 'Add Computer', new_computer_path %></li>
+
+				<li class="divider"></li>
+
+				<li><%= link_to 'Locations', locations_path %><li>
+
+				<li class="divider"></li>
+
+				<li><%= link_to 'Accounts', adobe_accounts_path %></li>
+
+				<li class="divider"></li>
+
+				<li><a href="register.rb">Register Script</a></li>
+
+			</ul>
+
+		</div>
+
+	</div>
+</body>
+</html>

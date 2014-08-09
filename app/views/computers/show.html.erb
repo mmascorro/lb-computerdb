@@ -1,0 +1,24 @@
+<h1></h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @computer.name %>
+</p>
+
+<p>
+  <strong>Serial:</strong>
+  <%= @computer.serial %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @computer.notes %>
+</p>
+<p>
+  <strong>Locaiton:</strong>
+  <%= @computer.location.name unless @computer.location.nil? %>
+</p>
+<%= link_to 'Edit', edit_computer_path(@computer) %>
+

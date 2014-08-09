@@ -1,0 +1,2 @@
+module AdobeAccountsHelper
+end

@@ -1,0 +1,7 @@
+<h1>Editing computer</h1>
+
+<%= render 'form', {edit_form: true} %>
+
+
+
+<p><%= link_to 'Delete', @computer, {method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert"} %></p>

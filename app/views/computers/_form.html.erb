@@ -1,0 +1,45 @@
+<%= form_for(@computer) do |f| %>
+  <% if @computer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@computer.errors.count, "error") %> prohibited this computer from being saved:</h2>
+
+      <ul>
+      <% @computer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :serial %><br>
+    <%= f.text_field :serial %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_field :notes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= collection_select(:computer, :location_id, @locations, :id, :name) %>
+  </div>
+
+  <% if local_assigns.has_key? :edit_form %>
+  <div class="field">
+    <%= select_tag 'account_id', 
+      options_from_collection_for_select(@accounts, :id, :email, @computer.adobe_account.collect{|aa| aa.id } )
+       %>
+  </div>
+  <% end %>
+
+
+
+  <div class="actions">
+    <%= f.submit class: "button" %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Serial</th>
+      <th>Notes</th>
+      <th>Location</th>
+      <th>Updated</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @computers.each do |computer| %>
+    <% p computer.location %>
+      <tr>
+        <td><%= computer.name %></td>
+        <td><%= computer.serial %></td>
+        <td><%= computer.notes %></td>
+        <td><%= computer.location.name unless computer.location.nil? %></td>
+        <td><%= computer.updated_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></td>
+        <td><%= link_to 'Edit', edit_computer_path(computer) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
