@@ -2,5 +2,13 @@
 <%= render 'form' %>
 
 
+	<ul>
+	<% @computers.each do |c| %>
+
+		<li><%= c.name %></li>
+
+	<% end %>
+	</ul>
+
 
 <p><%= link_to 'Delete', @adobe_account, {method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert"} %></p>

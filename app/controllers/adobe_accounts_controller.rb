@@ -22,6 +22,9 @@ class AdobeAccountsController < ApplicationController
 
   def edit
     @adobe_account = AdobeAccount.find(params[:id])
+
+
+    @computers = AdobeAccount.find(params[:id]).computer
   end
 
 
