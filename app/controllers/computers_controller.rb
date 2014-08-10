@@ -71,26 +71,25 @@ class ComputersController < ApplicationController
 
   #POST
   def register
-    puts computer_params
 
     comp = Computer.find_by_serial computer_params[:serial]
-    puts "---"
-    
 
+    account = ""
 
     if comp
-      #update
       comp.update(computer_params)
-      comp.save
-      puts "update"
+      comp.touch
+
+      if comp.adobe_account.any?
+        p comp.adobe_account[0][:email]
+        account = comp.adobe_account[0][:email]
+      end
     else
-      #create record
       newComp = Computer.new(computer_params)
       newComp.save
-      puts "create"
     end
 
-
+    render plain: account
 
   end
 
