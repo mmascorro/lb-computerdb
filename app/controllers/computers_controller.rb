@@ -48,7 +48,11 @@ class ComputersController < ApplicationController
     respond_to do |format|
       if @computer.update(computer_params)
 
-        @computer.adobe_account.replace( [AdobeAccount.find(params[:account_id])] )
+        if params[:account_id] != ""
+          @computer.adobe_account.replace( [AdobeAccount.find(params[:account_id])] )
+        else
+          @computer.adobe_account.delete_all
+        end
 
         format.html { redirect_to @computer, notice: 'Computer was successfully updated.' }
         format.json { head :no_content }
