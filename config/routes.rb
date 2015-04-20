@@ -5,6 +5,7 @@ Machineregistry::Application.routes.draw do
   resources :locations
 
   post 'computers/register' => 'computers#register'
+  post 'computers/getaccount' => 'computers#getaccount'
   resources :computers
 
   

@@ -97,6 +97,29 @@ class ComputersController < ApplicationController
 
   end
 
+
+  #POST
+  def getaccount
+
+    comp = Computer.find_by_serial computer_params[:serial]
+
+    account = ""
+
+    if comp
+      # comp.update(computer_params)
+      # comp.touch
+
+      if comp.adobe_account.any?
+        p comp.adobe_account[0][:email]
+        account = comp.adobe_account[0][:email]
+      end
+
+    end
+
+    render plain: account
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_computer
