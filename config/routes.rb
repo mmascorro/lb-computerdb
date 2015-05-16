@@ -4,6 +4,7 @@ Machineregistry::Application.routes.draw do
   resources :adobe_accounts
   resources :locations
 
+  get 'computers/info/:serial' => 'computers#computerinfo'
   post 'computers/register' => 'computers#register'
   post 'computers/getaccount' => 'computers#getaccount'
   resources :computers

@@ -10,9 +10,28 @@ class ComputersController < ApplicationController
   # GET /computers/1
   # GET /computers/1.json
   def show
-
-
   end
+
+  #GET /computers/info/:serial
+  def computerinfo
+
+    comp = Computer.find_by_serial params[:serial]
+
+    returndata = "0"
+    account = ""
+
+    if comp
+      returndata = "#{comp.name}"
+
+      if comp.adobe_account.any?
+        p comp.adobe_account[0][:email]
+        account = comp.adobe_account[0][:email]
+        returndata += ",#{account}"
+      end
+    end
+    render plain: returndata
+  end
+
 
   # GET /computers/new
   def new
@@ -91,29 +110,6 @@ class ComputersController < ApplicationController
     else
       newComp = Computer.new(computer_params)
       newComp.save
-    end
-
-    render plain: account
-
-  end
-
-
-  #POST
-  def getaccount
-
-    comp = Computer.find_by_serial computer_params[:serial]
-
-    account = ""
-
-    if comp
-      # comp.update(computer_params)
-      # comp.touch
-
-      if comp.adobe_account.any?
-        p comp.adobe_account[0][:email]
-        account = comp.adobe_account[0][:email]
-      end
-
     end
 
     render plain: account
