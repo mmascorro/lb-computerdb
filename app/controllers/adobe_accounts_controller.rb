@@ -1,6 +1,6 @@
 class AdobeAccountsController < ApplicationController
   def index
-  	@adobe_accounts = AdobeAccount.all.order("email ASC")
+  	@adobe_accounts = AdobeAccount.all.order("cast(replace(email,'student','') as integer) ASC")
   end
 
   def new
