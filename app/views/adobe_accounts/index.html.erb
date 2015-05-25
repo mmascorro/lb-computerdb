@@ -4,7 +4,8 @@
 <table>
   <thead>
     <tr>
-      <th>Index</th>
+      <th>Email</th>
+      <th>Computers</th>
       <th></th>
     </tr>
   </thead>
@@ -13,7 +14,13 @@
     <% @adobe_accounts.each do |act| %>
       <tr>
         <td><%= act.email %></td>
-      
+        <td>
+    
+          <% act.computer.each do |comp| %>
+            <%= link_to comp.name, comp %><br>
+          <% end %>
+         
+        </td>
         <td><%= link_to 'Edit', edit_adobe_account_path(act) %></td>
       </tr>
     <% end %>

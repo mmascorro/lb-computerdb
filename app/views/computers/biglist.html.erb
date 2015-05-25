@@ -16,6 +16,7 @@
     <tr>
       <th>Name</th>
       <th>Serial</th>
+      <th>Account</th>
       <th>Notes</th>
       <th>Location</th>
       <th>Updated</th>
@@ -29,6 +30,11 @@
       <tr>
         <td><%= computer.name %></td>
         <td><%= computer.serial %></td>
+        <td>
+          <% computer.adobe_account.each do |act| %>
+            <%= act.email %>
+          <% end %>
+        </td>
         <td><%= computer.notes %></td>
         <td><%= computer.location.name unless computer.location.nil? %></td>
         <td><%= computer.updated_at.in_time_zone("Central Time (US & Canada)").to_formatted_s(:long) %></td>
