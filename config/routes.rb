@@ -4,6 +4,8 @@ Machineregistry::Application.routes.draw do
   resources :adobe_accounts
   resources :locations
 
+  # match "/biglist" => "computers#biglist", via: [:get, :post], as: => :root
+
   get 'computers/info/:serial' => 'computers#computerinfo'
   post 'computers/register' => 'computers#register'
   post 'computers/getaccount' => 'computers#getaccount'
@@ -14,7 +16,9 @@ Machineregistry::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'computers#index'
+  root 'computers#biglist'
+
+  # match "/" => "computers#biglist", via: [:get, :post], as: => :root
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

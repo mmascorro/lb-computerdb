@@ -7,6 +7,18 @@ class ComputersController < ApplicationController
     @computers = Computer.all.order("name ASC")
   end
 
+
+  def biglist
+    if params[:computer].present? && params[:computer][:location_id] != ""
+      @selected = params[:computer][:location_id]
+      @computers = Computer.where(location_id: params[:computer][:location_id]).order("name ASC")
+    else
+      @selected = ""
+      @computers = Computer.all.order("name ASC")
+    end
+
+  end
+
   # GET /computers/1
   # GET /computers/1.json
   def show
